@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="ASCII"?>
+<gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="insert">
+  <figures name="Default">
+    <descriptors name="PrepareListFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="PrepareListFigure">
+        <preferredSize dx="100" dy="500"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="PrepareListLabelFigure" text="PrepareList">
+          <maximumSize dx="10000" dy="50"/>
+        </children>
+        <children xsi:type="gmfgraph:Rectangle" name="PrepareListNodesCompartmentFigure" outline="false"/>
+      </actualFigure>
+      <accessors accessor="getFigurePrepareListLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+      <accessors accessor="getPrepareListNodesCompartmentFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors name="InputInstalmentFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="InputInstalmentFigure">
+        <preferredSize dx="100" dy="500"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="InputInstalmentLabelFigure" text="InputInstalment">
+          <maximumSize dx="10000" dy="50"/>
+        </children>
+        <children xsi:type="gmfgraph:Rectangle" name="InputInstalmentInputsCompartmentFigure" outline="false"/>
+      </actualFigure>
+      <accessors accessor="getFigureInputInstalmentLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
+      <accessors accessor="getInputInstalmentInputsCompartmentFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors name="TableFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="TableFigure">
+        <preferredSize dx="100" dy="500"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="TableLabelFigure" text="Table">
+          <maximumSize dx="10000" dy="50"/>
+        </children>
+        <children xsi:type="gmfgraph:Rectangle" name="TableFieldsCompartmentFigure" outline="false"/>
+      </actualFigure>
+      <accessors accessor="getFigureTableLabelFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+      <accessors accessor="getTableFieldsCompartmentFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors name="FieldFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="FieldFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="FieldLabelFigure" text="Field"/>
+      </actualFigure>
+      <accessors accessor="getFigureFieldLabelFigure" figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="LiteralFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="LiteralFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="LiteralLabelFigure" text="Literal"/>
+      </actualFigure>
+      <accessors accessor="getFigureLiteralLabelFigure" figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="NullLiteralFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="NullLiteralFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="NullLiteralLabelFigure" text="NullLiteral"/>
+      </actualFigure>
+      <accessors accessor="getFigureNullLiteralLabelFigure" figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="FunctionFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="FunctionFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="FunctionLabelFigure" text="Function">
+          <maximumSize dx="10000" dy="50"/>
+        </children>
+        <children xsi:type="gmfgraph:Rectangle" name="FunctionParamsCompartmentFigure" outline="false"/>
+      </actualFigure>
+      <accessors accessor="getFigureFunctionLabelFigure" figure="//@figures.0/@descriptors.6/@actualFigure/@children.0"/>
+      <accessors accessor="getFunctionParamsCompartmentFigure" figure="//@figures.0/@descriptors.6/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors name="InputFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="InputFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="InputLabelFigure" text="Input"/>
+      </actualFigure>
+      <accessors accessor="getFigureInputLabelFigure" figure="//@figures.0/@descriptors.7/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="InputStringDefFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="InputStringDefFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="InputStringDefLabelFigure" text="InputStringDef"/>
+      </actualFigure>
+      <accessors accessor="getFigureInputStringDefLabelFigure" figure="//@figures.0/@descriptors.8/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="InputIntDefFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="InputIntDefFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="InputIntDefLabelFigure" text="InputIntDef"/>
+      </actualFigure>
+      <accessors accessor="getFigureInputIntDefLabelFigure" figure="//@figures.0/@descriptors.9/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="InputDateDefFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="InputDateDefFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="InputDateDefLabelFigure" text="InputDateDef"/>
+      </actualFigure>
+      <accessors accessor="getFigureInputDateDefLabelFigure" figure="//@figures.0/@descriptors.10/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="InputBitsDefFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="InputBitsDefFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="InputBitsDefLabelFigure" text="InputBitsDef"/>
+      </actualFigure>
+      <accessors accessor="getFigureInputBitsDefLabelFigure" figure="//@figures.0/@descriptors.11/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="InputFloatDefFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="InputFloatDefFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="InputFloatDefLabelFigure" text="InputFloatDef"/>
+      </actualFigure>
+      <accessors accessor="getFigureInputFloatDefLabelFigure" figure="//@figures.0/@descriptors.12/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="CallSurfaceQueryFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CallSurfaceQueryFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="CallSurfaceQueryLabelFigure" text="CallSurfaceQuery">
+          <maximumSize dx="10000" dy="50"/>
+        </children>
+        <children xsi:type="gmfgraph:Rectangle" name="CallSurfaceQueryParamsCompartmentFigure" outline="false"/>
+      </actualFigure>
+      <accessors accessor="getFigureCallSurfaceQueryLabelFigure" figure="//@figures.0/@descriptors.13/@actualFigure/@children.0"/>
+      <accessors accessor="getCallSurfaceQueryParamsCompartmentFigure" figure="//@figures.0/@descriptors.13/@actualFigure/@children.1"/>
+    </descriptors>
+  </figures>
+  <nodes name="PrepareList" figure="PrepareListFigure">
+    <facets xsi:type="gmfgraph:DefaultSizeFacet">
+      <defaultSize dx="100" dy="500"/>
+    </facets>
+  </nodes>
+  <nodes name="InputInstalment" figure="InputInstalmentFigure">
+    <facets xsi:type="gmfgraph:DefaultSizeFacet">
+      <defaultSize dx="100" dy="500"/>
+    </facets>
+  </nodes>
+  <nodes name="Table" figure="TableFigure">
+    <facets xsi:type="gmfgraph:DefaultSizeFacet">
+      <defaultSize dx="100" dy="500"/>
+    </facets>
+  </nodes>
+  <nodes name="Field" figure="FieldFigure"/>
+  <nodes name="Literal" figure="LiteralFigure"/>
+  <nodes name="NullLiteral" figure="NullLiteralFigure"/>
+  <nodes name="Function" figure="FunctionFigure"/>
+  <nodes name="Input" figure="InputFigure"/>
+  <nodes name="InputStringDef" figure="InputStringDefFigure"/>
+  <nodes name="InputIntDef" figure="InputIntDefFigure"/>
+  <nodes name="InputDateDef" figure="InputDateDefFigure"/>
+  <nodes name="InputBitsDef" figure="InputBitsDefFigure"/>
+  <nodes name="InputFloatDef" figure="InputFloatDefFigure"/>
+  <nodes name="CallSurfaceQuery" figure="CallSurfaceQueryFigure"/>
+  <compartments name="PrepareListNodesCompartment" figure="PrepareListFigure" collapsible="true" accessor="//@figures.0/@descriptors.0/@accessors.1"/>
+  <compartments name="InputInstalmentInputsCompartment" figure="InputInstalmentFigure" collapsible="true" accessor="//@figures.0/@descriptors.1/@accessors.1"/>
+  <compartments name="TableFieldsCompartment" figure="TableFigure" collapsible="true" accessor="//@figures.0/@descriptors.2/@accessors.1"/>
+  <compartments name="FunctionParamsCompartment" figure="FunctionFigure" collapsible="true" accessor="//@figures.0/@descriptors.6/@accessors.1"/>
+  <compartments name="CallSurfaceQueryParamsCompartment" figure="CallSurfaceQueryFigure" collapsible="true" accessor="//@figures.0/@descriptors.13/@accessors.1"/>
+  <labels name="PrepareListLabel" figure="PrepareListFigure" accessor="//@figures.0/@descriptors.0/@accessors.0"/>
+  <labels name="InputInstalmentLabel" figure="InputInstalmentFigure" accessor="//@figures.0/@descriptors.1/@accessors.0"/>
+  <labels name="TableLabel" figure="TableFigure" accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels name="FieldLabel" figure="FieldFigure" accessor="//@figures.0/@descriptors.3/@accessors.0"/>
+  <labels name="LiteralLabel" figure="LiteralFigure" accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels name="NullLiteralLabel" figure="NullLiteralFigure" accessor="//@figures.0/@descriptors.5/@accessors.0"/>
+  <labels name="FunctionLabel" figure="FunctionFigure" accessor="//@figures.0/@descriptors.6/@accessors.0"/>
+  <labels name="InputLabel" figure="InputFigure" accessor="//@figures.0/@descriptors.7/@accessors.0"/>
+  <labels name="InputStringDefLabel" figure="InputStringDefFigure" accessor="//@figures.0/@descriptors.8/@accessors.0"/>
+  <labels name="InputIntDefLabel" figure="InputIntDefFigure" accessor="//@figures.0/@descriptors.9/@accessors.0"/>
+  <labels name="InputDateDefLabel" figure="InputDateDefFigure" accessor="//@figures.0/@descriptors.10/@accessors.0"/>
+  <labels name="InputBitsDefLabel" figure="InputBitsDefFigure" accessor="//@figures.0/@descriptors.11/@accessors.0"/>
+  <labels name="InputFloatDefLabel" figure="InputFloatDefFigure" accessor="//@figures.0/@descriptors.12/@accessors.0"/>
+  <labels name="CallSurfaceQueryLabel" figure="CallSurfaceQueryFigure" accessor="//@figures.0/@descriptors.13/@accessors.0"/>
+</gmfgraph:Canvas>

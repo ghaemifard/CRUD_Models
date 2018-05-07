@@ -1,0 +1,39 @@
+/**
+ */
+package delete;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Greater Equal Than Link</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link delete.GreaterEqualThanLink#getDesc <em>Desc</em>}</li>
+ * </ul>
+ *
+ * @see delete.DeletePackage#getGreaterEqualThanLink()
+ * @model
+ * @generated
+ */
+public interface GreaterEqualThanLink extends ConditionLink {
+	/**
+	 * Returns the value of the '<em><b>Desc</b></em>' attribute.
+	 * The default value is <code>">="</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Desc</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Desc</em>' attribute.
+	 * @see delete.DeletePackage#getGreaterEqualThanLink_Desc()
+	 * @model default=">=" changeable="false"
+	 * @generated
+	 */
+	String getDesc();
+
+} // GreaterEqualThanLink

@@ -1,0 +1,1235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+
+-->
+<plugin>
+
+   <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
+      <?gmfgen generated="true"?>
+      <fileTypes type="text" extension="dext"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
+      <?gmfgen generated="true"?>
+      <parser
+         type="dext"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors" id="gmf-editor">
+      <?gmfgen generated="true"?>
+      <editor
+         id="query.diagram.part.QueryDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/QueryDiagramFile.gif"
+         extensions="dext"
+         default="true"
+         class="query.diagram.part.QueryDiagramEditor"
+         matchingStrategy="query.diagram.part.QueryMatchingStrategy"
+         contributorClass="query.diagram.part.QueryDiagramActionBarContributor">
+      </editor>
+   </extension>
+   
+   <extension point="org.eclipse.ui.contexts" id="ui-context">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="query.diagram.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
+      <?gmfgen generated="true"?>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/obj16/QueryDiagramFile.gif"
+  	     category="org.eclipse.ui.Examples"
+  	     class="query.diagram.part.QueryCreationWizard"
+  	     id="query.diagram.part.QueryCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="edu.aut.islab.query.diagram.InitDiagram"
+            nameFilter="*.mext"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="query.diagram.part.QueryInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="edu.aut.islab.query.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+	
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders" id="global-actions">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="QueryPresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="query.diagram.part.QueryDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="save">
+               </GlobalActionId>
+            </ElementType>        
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.printing.render.providers.DiagramWithPrintGlobalActionHandlerProvider"
+         id="QueryPresentationPrint">
+         <Priority name="Lowest"/>
+         <ViewId id="query.diagram.part.QueryDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="print"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="QueryPresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="query.diagram.part.QueryDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="QueryRender">
+         <Priority name="Lowest"/>
+         <ViewId id="query.diagram.part.QueryDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+      <?gmfgen generated="true"?>
+      <MarkerNavigationProvider class="query.diagram.providers.QueryMarkerNavigationProvider">
+         <MarkerType name="edu.aut.islab.query.diagram.diagnostic"/>
+         <Priority name="Lowest"/>
+      </MarkerNavigationProvider>
+   </extension>
+
+   <extension id="diagnostic" name="Query Plugin problems" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>
+   </extension>   
+
+   <extension id="validationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="query.diagram.providers.QueryValidationDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+   <extension point="org.eclipse.core.runtime.preferences" id="prefs">
+      <?gmfgen generated="true"?>
+      <initializer class="query.diagram.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages" id="prefpages">
+      <?gmfgen generated="true"?>
+      <page
+            id="edu.aut.islab.query.diagram.general"
+            name="%prefpage.edu.aut.islab.query.diagram.general"
+            class="query.diagram.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="edu.aut.islab.query.diagram.appearance"
+            name="%prefpage.edu.aut.islab.query.diagram.appearance"
+            category="edu.aut.islab.query.diagram.general"
+            class="query.diagram.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="edu.aut.islab.query.diagram.connections"
+            name="%prefpage.edu.aut.islab.query.diagram.connections"
+            category="edu.aut.islab.query.diagram.general"
+            class="query.diagram.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="edu.aut.islab.query.diagram.printing"
+            name="%prefpage.edu.aut.islab.query.diagram.printing"
+            category="edu.aut.islab.query.diagram.general"
+            class="query.diagram.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="edu.aut.islab.query.diagram.rulersAndGrid"
+            name="%prefpage.edu.aut.islab.query.diagram.rulersAndGrid"
+            category="edu.aut.islab.query.diagram.general"
+            class="query.diagram.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="edu.aut.islab.query.diagram"
+            labelProvider="query.diagram.sheet.QuerySheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="edu.aut.islab.query.diagram">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+      </propertyTabs>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="edu.aut.islab.query.diagram">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="query.diagram.sheet.QueryPropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="query.diagram.navigator.QueryAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
+      <?gmfgen generated="true"?>
+      <viewProvider class="query.diagram.providers.QueryViewProvider">
+         <Priority name="Lowest"/>
+         <object id="referencing-diagrams" class="org.eclipse.gmf.runtime.notation.Diagram">
+            <method name="getType()" value="mext"/>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Query"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027,3032,3030,3031"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012"/>
+      </viewProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders" id="ep-provider">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="query.diagram.providers.QueryEditPartProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
+            <method name="getType()" value="Query"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
+            <method name="getType()" value="2001,2002,2003,2004,2005,2006,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027,3032,3030,3031"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
+            <method name="getType()" value="4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
+            <method name="getType()" value="5016,5017,5026,5031,5033,5035,5001,5002,5015,5009,5008,5003,5004,5005,5007,5006,5010,5011,5012,5013,5014,5018,5019,5020,5021,5022,5023,5025,5024,5027,5028,5029,5030,5038,5036,5037"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
+            <method name="getType()" value="7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014"/>
+         </object>
+         <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
+      </editpartProvider>
+   </extension>
+
+   
+   <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfQuerySurfaceEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.QuerySurfaceEditPart" id="QuerySurface_1000"/>
+         <context elements="QuerySurface_1000"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfWhereInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.WhereInstalmentEditPart" id="WhereInstalment_2001"/>
+         <context elements="WhereInstalment_2001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfHavingInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.HavingInstalmentEditPart" id="HavingInstalment_2002"/>
+         <context elements="HavingInstalment_2002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfOutputInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.OutputInstalmentEditPart" id="OutputInstalment_2003"/>
+         <context elements="OutputInstalment_2003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfInputInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.InputInstalmentEditPart" id="InputInstalment_2004"/>
+         <context elements="InputInstalment_2004"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfGroupInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.GroupInstalmentEditPart" id="GroupInstalment_2005"/>
+         <context elements="GroupInstalment_2005"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfSortInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.SortInstalmentEditPart" id="SortInstalment_2006"/>
+         <context elements="SortInstalment_2006"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfRootJunctionEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.RootJunctionEditPart" id="RootJunction_3001"/>
+         <context elements="RootJunction_3001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfJunctionEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.JunctionEditPart" id="Junction_3002"/>
+         <context elements="Junction_3002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfTermEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.TermEditPart" id="Term_3003"/>
+         <context elements="Term_3003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfCallQuerySurfaceEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.CallQuerySurfaceEditPart" id="CallQuerySurface_3004"/>
+         <context elements="CallQuerySurface_3004"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfCallQuerySurface2EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.CallQuerySurface2EditPart" id="CallQuerySurface_3005"/>
+         <context elements="CallQuerySurface_3005"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfFieldEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.FieldEditPart" id="Field_3006"/>
+         <context elements="Field_3006"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfLiteralEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.LiteralEditPart" id="Literal_3007"/>
+         <context elements="Literal_3007"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfNullLiteralEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.NullLiteralEditPart" id="NullLiteral_3008"/>
+         <context elements="NullLiteral_3008"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfFunctionEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.FunctionEditPart" id="Function_3009"/>
+         <context elements="Function_3009"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfInputEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.InputEditPart" id="Input_3010"/>
+         <context elements="Input_3010"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfField2EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.Field2EditPart" id="Field_3011"/>
+         <context elements="Field_3011"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfLiteral2EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.Literal2EditPart" id="Literal_3012"/>
+         <context elements="Literal_3012"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfNullLiteral2EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.NullLiteral2EditPart" id="NullLiteral_3013"/>
+         <context elements="NullLiteral_3013"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfFunction2EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.Function2EditPart" id="Function_3014"/>
+         <context elements="Function_3014"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfInput2EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.Input2EditPart" id="Input_3015"/>
+         <context elements="Input_3015"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfCallQuerySurface3EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.CallQuerySurface3EditPart" id="CallQuerySurface_3016"/>
+         <context elements="CallQuerySurface_3016"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfField3EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.Field3EditPart" id="Field_3017"/>
+         <context elements="Field_3017"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfLiteral3EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.Literal3EditPart" id="Literal_3018"/>
+         <context elements="Literal_3018"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfNullLiteral3EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.NullLiteral3EditPart" id="NullLiteral_3019"/>
+         <context elements="NullLiteral_3019"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfFunction3EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.Function3EditPart" id="Function_3020"/>
+         <context elements="Function_3020"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfInput3EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.Input3EditPart" id="Input_3021"/>
+         <context elements="Input_3021"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfMyTableEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.MyTableEditPart" id="MyTable_3022"/>
+         <context elements="MyTable_3022"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfField4EditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.Field4EditPart" id="Field_3023"/>
+         <context elements="Field_3023"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfInputStringDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.InputStringDefEditPart" id="InputStringDef_3024"/>
+         <context elements="InputStringDef_3024"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfInputIntDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.InputIntDefEditPart" id="InputIntDef_3025"/>
+         <context elements="InputIntDef_3025"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfInputDateDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.InputDateDefEditPart" id="InputDateDef_3026"/>
+         <context elements="InputDateDef_3026"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfInputBitsDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.InputBitsDefEditPart" id="InputBitsDef_3027"/>
+         <context elements="InputBitsDef_3027"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfInputFloatDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.InputFloatDefEditPart" id="InputFloatDef_3032"/>
+         <context elements="InputFloatDef_3032"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfFieldGPointerEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.FieldGPointerEditPart" id="FieldGPointer_3030"/>
+         <context elements="FieldGPointer_3030"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="query.diagram.providers.assistants.QueryModelingAssistantProviderOfFieldSPointerEditPart">
+         <Priority name="Lowest"/>
+         <object class="query.diagram.edit.parts.FieldSPointerEditPart" id="FieldSPointer_3031"/>
+         <context elements="FieldSPointer_3031"/>
+      </modelingAssistantProvider>
+      
+   </extension>
+
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
+      <?gmfgen generated="true"?>
+      <IconProvider class="query.diagram.providers.QueryIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="query.diagram.providers.QueryParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders" id="decorator-provider">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="query.diagram.providers.QueryShortcutsDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Node(org.eclipse.gmf.runtime.notation)" id="generated-top-nodes">
+            <method name="getType()" value="2001,2002,2003,2004,2005,2006"/>
+         </object>
+         <context decoratorTargets="generated-top-nodes"/>
+      </decoratorProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes" id="element-types">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.QuerySurface_1000"
+               name="%metatype.name.QuerySurface_1000"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="QuerySurface"
+               edithelper="query.diagram.edit.helpers.QuerySurfaceEditHelper">
+            <param name="semanticHint" value="1000"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.WhereInstalment_2001"
+               name="%metatype.name.WhereInstalment_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="WhereInstalment"
+               edithelper="query.diagram.edit.helpers.WhereInstalmentEditHelper">
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.HavingInstalment_2002"
+               name="%metatype.name.HavingInstalment_2002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="HavingInstalment"
+               edithelper="query.diagram.edit.helpers.HavingInstalmentEditHelper">
+            <param name="semanticHint" value="2002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.OutputInstalment_2003"
+               name="%metatype.name.OutputInstalment_2003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="OutputInstalment"
+               edithelper="query.diagram.edit.helpers.OutputInstalmentEditHelper">
+            <param name="semanticHint" value="2003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.InputInstalment_2004"
+               name="%metatype.name.InputInstalment_2004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputInstalment"
+               edithelper="query.diagram.edit.helpers.InputInstalmentEditHelper">
+            <param name="semanticHint" value="2004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.GroupInstalment_2005"
+               name="%metatype.name.GroupInstalment_2005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="GroupInstalment"
+               edithelper="query.diagram.edit.helpers.GroupInstalmentEditHelper">
+            <param name="semanticHint" value="2005"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.SortInstalment_2006"
+               name="%metatype.name.SortInstalment_2006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SortInstalment"
+               edithelper="query.diagram.edit.helpers.SortInstalmentEditHelper">
+            <param name="semanticHint" value="2006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.RootJunction_3001"
+               name="%metatype.name.RootJunction_3001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="RootJunction"
+               edithelper="query.diagram.edit.helpers.RootJunctionEditHelper">
+            <param name="semanticHint" value="3001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.Junction_3002"
+               name="%metatype.name.Junction_3002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Junction"
+               edithelper="query.diagram.edit.helpers.JunctionEditHelper">
+            <param name="semanticHint" value="3002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.Term_3003"
+               name="%metatype.name.Term_3003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Term"
+               edithelper="query.diagram.edit.helpers.TermEditHelper">
+            <param name="semanticHint" value="3003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.CallQuerySurface_3004"
+               name="%metatype.name.CallQuerySurface_3004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="CallQuerySurface"
+               edithelper="query.diagram.edit.helpers.CallQuerySurfaceEditHelper">
+            <param name="semanticHint" value="3004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.CallQuerySurface_3005"
+               name="%metatype.name.CallQuerySurface_3005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.CallQuerySurface_3004"/>
+            <param name="semanticHint" value="3005"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.Field_3006"
+               name="%metatype.name.Field_3006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Field"
+               edithelper="query.diagram.edit.helpers.FieldEditHelper">
+            <param name="semanticHint" value="3006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.Literal_3007"
+               name="%metatype.name.Literal_3007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Literal"
+               edithelper="query.diagram.edit.helpers.LiteralEditHelper">
+            <param name="semanticHint" value="3007"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.NullLiteral_3008"
+               name="%metatype.name.NullLiteral_3008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="NullLiteral"
+               edithelper="query.diagram.edit.helpers.NullLiteralEditHelper">
+            <param name="semanticHint" value="3008"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.Function_3009"
+               name="%metatype.name.Function_3009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Function"
+               edithelper="query.diagram.edit.helpers.FunctionEditHelper">
+            <param name="semanticHint" value="3009"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.Input_3010"
+               name="%metatype.name.Input_3010"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Input"
+               edithelper="query.diagram.edit.helpers.InputEditHelper">
+            <param name="semanticHint" value="3010"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.Field_3011"
+               name="%metatype.name.Field_3011"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.Field_3006"/>
+            <param name="semanticHint" value="3011"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.Literal_3012"
+               name="%metatype.name.Literal_3012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.Literal_3007"/>
+            <param name="semanticHint" value="3012"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.NullLiteral_3013"
+               name="%metatype.name.NullLiteral_3013"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.NullLiteral_3008"/>
+            <param name="semanticHint" value="3013"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.Function_3014"
+               name="%metatype.name.Function_3014"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.Function_3009"/>
+            <param name="semanticHint" value="3014"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.Input_3015"
+               name="%metatype.name.Input_3015"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.Input_3010"/>
+            <param name="semanticHint" value="3015"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.CallQuerySurface_3016"
+               name="%metatype.name.CallQuerySurface_3016"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.CallQuerySurface_3004"/>
+            <param name="semanticHint" value="3016"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.Field_3017"
+               name="%metatype.name.Field_3017"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.Field_3006"/>
+            <param name="semanticHint" value="3017"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.Literal_3018"
+               name="%metatype.name.Literal_3018"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.Literal_3007"/>
+            <param name="semanticHint" value="3018"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.NullLiteral_3019"
+               name="%metatype.name.NullLiteral_3019"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.NullLiteral_3008"/>
+            <param name="semanticHint" value="3019"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.Function_3020"
+               name="%metatype.name.Function_3020"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.Function_3009"/>
+            <param name="semanticHint" value="3020"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.Input_3021"
+               name="%metatype.name.Input_3021"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.Input_3010"/>
+            <param name="semanticHint" value="3021"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.MyTable_3022"
+               name="%metatype.name.MyTable_3022"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="MyTable"
+               edithelper="query.diagram.edit.helpers.MyTableEditHelper">
+            <param name="semanticHint" value="3022"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.query.diagram.Field_3023"
+               name="%metatype.name.Field_3023"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.query.diagram.Field_3006"/>
+            <param name="semanticHint" value="3023"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.InputStringDef_3024"
+               name="%metatype.name.InputStringDef_3024"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputStringDef"
+               edithelper="query.diagram.edit.helpers.InputStringDefEditHelper">
+            <param name="semanticHint" value="3024"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.InputIntDef_3025"
+               name="%metatype.name.InputIntDef_3025"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputIntDef"
+               edithelper="query.diagram.edit.helpers.InputIntDefEditHelper">
+            <param name="semanticHint" value="3025"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.InputDateDef_3026"
+               name="%metatype.name.InputDateDef_3026"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputDateDef"
+               edithelper="query.diagram.edit.helpers.InputDateDefEditHelper">
+            <param name="semanticHint" value="3026"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.InputBitsDef_3027"
+               name="%metatype.name.InputBitsDef_3027"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputBitsDef"
+               edithelper="query.diagram.edit.helpers.InputBitsDefEditHelper">
+            <param name="semanticHint" value="3027"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.InputFloatDef_3032"
+               name="%metatype.name.InputFloatDef_3032"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputFloatDef"
+               edithelper="query.diagram.edit.helpers.InputFloatDefEditHelper">
+            <param name="semanticHint" value="3032"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.FieldGPointer_3030"
+               name="%metatype.name.FieldGPointer_3030"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="FieldGPointer"
+               edithelper="query.diagram.edit.helpers.FieldGPointerEditHelper">
+            <param name="semanticHint" value="3030"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.FieldSPointer_3031"
+               name="%metatype.name.FieldSPointer_3031"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="FieldSPointer"
+               edithelper="query.diagram.edit.helpers.FieldSPointerEditHelper">
+            <param name="semanticHint" value="3031"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.InnerjoinRels_4001"
+               name="%metatype.name.InnerjoinRels_4001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InnerjoinRels"
+               edithelper="query.diagram.edit.helpers.InnerjoinRelsEditHelper">
+            <param name="semanticHint" value="4001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.LeftOuterJoinRels_4002"
+               name="%metatype.name.LeftOuterJoinRels_4002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LeftOuterJoinRels"
+               edithelper="query.diagram.edit.helpers.LeftOuterJoinRelsEditHelper">
+            <param name="semanticHint" value="4002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.RightOuterJoinRels_4003"
+               name="%metatype.name.RightOuterJoinRels_4003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="RightOuterJoinRels"
+               edithelper="query.diagram.edit.helpers.RightOuterJoinRelsEditHelper">
+            <param name="semanticHint" value="4003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.FullOuterJoinRels_4004"
+               name="%metatype.name.FullOuterJoinRels_4004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="FullOuterJoinRels"
+               edithelper="query.diagram.edit.helpers.FullOuterJoinRelsEditHelper">
+            <param name="semanticHint" value="4004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.EqualLink_4005"
+               name="%metatype.name.EqualLink_4005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="EqualLink"
+               edithelper="query.diagram.edit.helpers.EqualLinkEditHelper">
+            <param name="semanticHint" value="4005"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.GreaterThanLink_4006"
+               name="%metatype.name.GreaterThanLink_4006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="GreaterThanLink"
+               edithelper="query.diagram.edit.helpers.GreaterThanLinkEditHelper">
+            <param name="semanticHint" value="4006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.GreaterEqualThanLink_4007"
+               name="%metatype.name.GreaterEqualThanLink_4007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="GreaterEqualThanLink"
+               edithelper="query.diagram.edit.helpers.GreaterEqualThanLinkEditHelper">
+            <param name="semanticHint" value="4007"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.LowerThanLink_4008"
+               name="%metatype.name.LowerThanLink_4008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LowerThanLink"
+               edithelper="query.diagram.edit.helpers.LowerThanLinkEditHelper">
+            <param name="semanticHint" value="4008"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.LowerEqualThanLink_4009"
+               name="%metatype.name.LowerEqualThanLink_4009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LowerEqualThanLink"
+               edithelper="query.diagram.edit.helpers.LowerEqualThanLinkEditHelper">
+            <param name="semanticHint" value="4009"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.InLink_4010"
+               name="%metatype.name.InLink_4010"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InLink"
+               edithelper="query.diagram.edit.helpers.InLinkEditHelper">
+            <param name="semanticHint" value="4010"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.LikeLink_4011"
+               name="%metatype.name.LikeLink_4011"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LikeLink"
+               edithelper="query.diagram.edit.helpers.LikeLinkEditHelper">
+            <param name="semanticHint" value="4011"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.query.this.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.query.diagram.JuncRelationship_4012"
+               name="%metatype.name.JuncRelationship_4012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="JuncRelationship"
+               edithelper="query.diagram.edit.helpers.JuncRelationshipEditHelper">
+            <param name="semanticHint" value="4012"/>
+         </metamodelType>
+      </metamodel>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="edu.aut.islab.query.diagram.TypeContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="edu.aut.islab.query.diagram.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="edu.aut.islab.query.diagram.TypeContext">
+         <elementType ref="edu.aut.islab.query.diagram.QuerySurface_1000"/>
+         <elementType ref="edu.aut.islab.query.diagram.WhereInstalment_2001"/>
+         <elementType ref="edu.aut.islab.query.diagram.HavingInstalment_2002"/>
+         <elementType ref="edu.aut.islab.query.diagram.OutputInstalment_2003"/>
+         <elementType ref="edu.aut.islab.query.diagram.InputInstalment_2004"/>
+         <elementType ref="edu.aut.islab.query.diagram.GroupInstalment_2005"/>
+         <elementType ref="edu.aut.islab.query.diagram.SortInstalment_2006"/>
+         <elementType ref="edu.aut.islab.query.diagram.RootJunction_3001"/>
+         <elementType ref="edu.aut.islab.query.diagram.Junction_3002"/>
+         <elementType ref="edu.aut.islab.query.diagram.Term_3003"/>
+         <elementType ref="edu.aut.islab.query.diagram.CallQuerySurface_3004"/>
+         <elementType ref="edu.aut.islab.query.diagram.CallQuerySurface_3005"/>
+         <elementType ref="edu.aut.islab.query.diagram.Field_3006"/>
+         <elementType ref="edu.aut.islab.query.diagram.Literal_3007"/>
+         <elementType ref="edu.aut.islab.query.diagram.NullLiteral_3008"/>
+         <elementType ref="edu.aut.islab.query.diagram.Function_3009"/>
+         <elementType ref="edu.aut.islab.query.diagram.Input_3010"/>
+         <elementType ref="edu.aut.islab.query.diagram.Field_3011"/>
+         <elementType ref="edu.aut.islab.query.diagram.Literal_3012"/>
+         <elementType ref="edu.aut.islab.query.diagram.NullLiteral_3013"/>
+         <elementType ref="edu.aut.islab.query.diagram.Function_3014"/>
+         <elementType ref="edu.aut.islab.query.diagram.Input_3015"/>
+         <elementType ref="edu.aut.islab.query.diagram.CallQuerySurface_3016"/>
+         <elementType ref="edu.aut.islab.query.diagram.Field_3017"/>
+         <elementType ref="edu.aut.islab.query.diagram.Literal_3018"/>
+         <elementType ref="edu.aut.islab.query.diagram.NullLiteral_3019"/>
+         <elementType ref="edu.aut.islab.query.diagram.Function_3020"/>
+         <elementType ref="edu.aut.islab.query.diagram.Input_3021"/>
+         <elementType ref="edu.aut.islab.query.diagram.MyTable_3022"/>
+         <elementType ref="edu.aut.islab.query.diagram.Field_3023"/>
+         <elementType ref="edu.aut.islab.query.diagram.InputStringDef_3024"/>
+         <elementType ref="edu.aut.islab.query.diagram.InputIntDef_3025"/>
+         <elementType ref="edu.aut.islab.query.diagram.InputDateDef_3026"/>
+         <elementType ref="edu.aut.islab.query.diagram.InputBitsDef_3027"/>
+         <elementType ref="edu.aut.islab.query.diagram.InputFloatDef_3032"/>
+         <elementType ref="edu.aut.islab.query.diagram.FieldGPointer_3030"/>
+         <elementType ref="edu.aut.islab.query.diagram.FieldSPointer_3031"/>
+         <elementType ref="edu.aut.islab.query.diagram.InnerjoinRels_4001"/>
+         <elementType ref="edu.aut.islab.query.diagram.LeftOuterJoinRels_4002"/>
+         <elementType ref="edu.aut.islab.query.diagram.RightOuterJoinRels_4003"/>
+         <elementType ref="edu.aut.islab.query.diagram.FullOuterJoinRels_4004"/>
+         <elementType ref="edu.aut.islab.query.diagram.EqualLink_4005"/>
+         <elementType ref="edu.aut.islab.query.diagram.GreaterThanLink_4006"/>
+         <elementType ref="edu.aut.islab.query.diagram.GreaterEqualThanLink_4007"/>
+         <elementType ref="edu.aut.islab.query.diagram.LowerThanLink_4008"/>
+         <elementType ref="edu.aut.islab.query.diagram.LowerEqualThanLink_4009"/>
+         <elementType ref="edu.aut.islab.query.diagram.InLink_4010"/>
+         <elementType ref="edu.aut.islab.query.diagram.LikeLink_4011"/>
+         <elementType ref="edu.aut.islab.query.diagram.JuncRelationship_4012"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isURIEditorInput">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="edu.aut.islab.query.diagram.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="edu.aut.islab.query.diagram"
+           properties="isURIEditorInput"
+           class="query.diagram.part.QueryUriEditorInputTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isShortcut">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="edu.aut.islab.query.diagram.ShortcutPropertyTester"
+           type="org.eclipse.gmf.runtime.notation.View"
+           namespace="edu.aut.islab.query.diagram"
+           properties="isShortcut"
+           class="query.diagram.part.QueryShortcutPropertyTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.ui.navigator.viewer" id="navigator-viewbinding">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="edu.aut.islab.query.diagram.resourceContent"/>
+			<contentExtension pattern="edu.aut.islab.query.diagram.domainResourceContent"/>
+            <contentExtension pattern="edu.aut.islab.query.diagram.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="edu.aut.islab.query.diagram.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="edu.aut.islab.query.diagram.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="query.diagram.navigator.QueryNavigatorContentProvider" 
+            labelProvider="query.diagram.navigator.QueryNavigatorLabelProvider"
+            icon="icons/obj16/QueryDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="dext"/>
+               </and>
+               <instanceof value="query.diagram.navigator.QueryAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="edu.aut.islab.query.diagram.isShortcut"/>
+           	   </adapt>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="query.diagram.navigator.QueryAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="edu.aut.islab.query.diagram.isShortcut"/>
+           	   </adapt>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="edu.aut.islab.query.diagram.navigatorSorter" 
+               class="query.diagram.navigator.QueryNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="dext"/>
+                  </and>
+                  <instanceof value="query.diagram.navigator.QueryAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="edu.aut.islab.query.diagram.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="query.diagram.navigator.QueryDomainNavigatorContentProvider" 
+            labelProvider="query.diagram.navigator.QueryDomainNavigatorLabelProvider"
+            icon="icons/obj16/QueryDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="mext"/>
+               </and>
+               <instanceof value="query.diagram.navigator.QueryDomainNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <instanceof value="query.diagram.navigator.QueryDomainNavigatorItem"/>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="edu.aut.islab.query.diagram.navigatorActionProvider"
+            class="query.diagram.navigator.QueryNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="query.diagram.navigator.QueryAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="edu.aut.islab.query.diagram.isShortcut"/>
+           	   </adapt>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+   
+	   <extension point="org.eclipse.ui.navigator.linkHelper" id="navigator-linkhelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="edu.aut.islab.query.diagram.navigatorLinkHelper"
+            class="query.diagram.navigator.QueryNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="edu.aut.islab.query.diagram.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="query.diagram.navigator.QueryAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+   <extension point="org.eclipse.ui.commands" id="update-cmd">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="query.diagram.part.QueryDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="query.diagram.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="query.diagram.updateDiagram"
+         contextId="query.diagram.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus" id="context-menus">
+      <?gmfgen generated="true"?>
+      <!-- menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=">
+      </menuContribution>
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=">
+      </menuContribution -->
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="edu.aut.islab.query.diagram.LoadResourceAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="query.diagram.part.QueryDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="query.diagram.edit.parts.QuerySurfaceEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands" id="menu-commands">
+      <?gmfgen generated="true"?>
+      <category id="query.diagram.part.QueryDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
+      <command id="edu.aut.islab.query.diagram.LoadResourceAction"
+         name="Load Resource"
+         categoryId="query.diagram.part.QueryDiagramEditorID"
+         defaultHandler="query.diagram.part.LoadResourceAction"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers" id="menu-handlers">
+      <?gmfgen generated="true"?>
+   </extension>
+
+   <!-- optionally, specify keybindings -->
+</plugin>

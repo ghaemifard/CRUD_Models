@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated delete -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="delete.presentation.DeleteModelWizardID"
+            name="%_UI_DeleteModelWizard_label"
+            class="delete.presentation.DeleteModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DeleteModelFile.gif">
+         <description>%_UI_DeleteModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated delete -->
+      <editor
+            id="delete.presentation.DeleteEditorID"
+            name="%_UI_DeleteEditor_label"
+            icon="icons/full/obj16/DeleteModelFile.gif"
+            extensions="delete"
+            class="delete.presentation.DeleteEditor"
+            contributorClass="delete.presentation.DeleteActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

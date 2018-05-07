@@ -1,0 +1,140 @@
+@namespace(
+	uri="http://www.insert.it.is/v1.0/beta",
+	prefix="insert")
+@gmf
+package insert;
+@gmf.diagram(diagram.extension="idext",model.extension="imext")
+class InsertSurface{
+	val InputInstalment[0..1] inputInstalment; 
+	val PrepareList[1] prepareList;
+	val Table[1] tableInstalment;
+	ref Type[*] types;
+	ref FunctionDef[*] funcs;
+	attr String name;
+	attr String description;
+	attr String associatedClass;
+	attr String userName;
+	attr String password;
+	attr String uri;
+}
+
+
+@gmf.node(label="name",size="100,500")
+class PrepareList{
+	readonly attr String name="PreparedItems";
+	@gmf.compartment(layout = "list")
+	val Node[*] nodes;
+}
+
+@gmf.node(label="name",size="100,500")
+class InputInstalment{
+	readonly attr String name="Inputs";
+	@gmf.compartment(layout = "list")
+	val InputDef[*] inputs;
+}
+
+@gmf.node(label="name")
+abstract class AbstractNode{
+	
+}
+@gmf.node(label="name",size="100,500")
+class Table extends AbstractNode{
+	attr String name;
+	@gmf.compartment(layout = "list")
+	val Field[*]#table fields;
+}
+
+
+abstract class Node extends AbstractNode{
+	ref Type type;
+	ref Subtype subtype;
+	attr boolean listable = false;
+	attr String column_name;
+}
+@gmf.node(label="name,column_name" ,padding="10",label.pattern="{0}/{1}" )
+class Field extends Node{
+	attr String name; 
+	ref Table#fields table;
+	attr String tableName;
+	ref Table table_ref;
+	attr boolean distict;
+}
+
+@gmf.node(label="value,column_name",label.pattern="{0}/{1}" )
+class Literal extends Node{
+	attr String value;
+	attr LiteralType ltype;
+}
+
+enum LiteralType{
+	STRING;
+	INT;
+	DOUBLE;
+	DATE;
+	BITS; 
+}
+
+@gmf.node(label="column_name",label.pattern="{0}")
+class NullLiteral extends Node{
+	readonly attr String value = "null";
+	
+}
+
+class Function extends Node{
+	attr String name;
+	ref FunctionDef[1] funcDef;
+	@gmf.compartment(layout = "list")
+	val Node[*] params;
+	
+}
+
+
+class FunctionDef{
+	attr String name;
+	ref Subtype returntype;
+	ref Type args;
+}
+@gmf.node(label="column_name" )
+class Input extends Node{
+	ref InputDef[1] inpDef; 
+}
+
+@gmf.node(label="name" )
+abstract class InputDef{
+	attr String name;
+	attr int index;
+	attr boolean listable = false;
+}
+
+
+class InputStringDef   extends InputDef  {
+	
+}
+class InputIntDef extends InputDef {
+	
+}
+class InputDateDef extends InputDef {
+	
+}
+class InputBitsDef extends InputDef {
+	
+}
+
+class InputFloatDef extends InputDef {
+	
+}
+ 
+class CallSurfaceQuery extends Function{
+ 
+	attr String surfaceName;
+}
+
+class Type{
+	attr String name;
+	ref Subtype[*] subtypes;	
+}
+
+class Subtype{
+	attr String name;
+}
+

@@ -1,0 +1,282 @@
+@namespace(
+	uri="http://www.delete.it.is/v1.0/beta",
+	prefix="delete")
+@gmf
+package delete;
+@gmf.diagram(diagram.extension="ddext",model.extension="dmext")
+class DeleteSurface{
+	val InputInstalment[0..1] inputInsta;
+	val TableListInstalment[1] tableInsta;
+	val ConditionInstalment[0..1] whereInsta;
+	val SortInstalment[0..1] sortInstalment; 
+	val Dummy dummy;
+	ref Type[*] types; 
+	ref FunctionDef[*] funcs;
+	attr String name;
+	attr String description;
+	attr String associatedClass;
+	attr String userName;
+	attr String password;
+	attr String uri;
+} 
+
+@gmf.node(label="name",size="250,500")
+class ConditionInstalment{
+	readonly attr String name="Where";
+	@gmf.compartment
+	val AbstractConditionElement[*] parts;
+	val JuncRelationship[*] links;
+}
+
+@gmf.node(label="name",size="250,500")
+ class Dummy{
+	readonly attr String name="";
+	@gmf.compartment
+	val AbstractNode[*] parts; 
+}
+
+@gmf.node(label="name",size="100,500")
+class TableListInstalment{
+	readonly attr String name="Table Selection";
+	@gmf.compartment(layout = "list")
+	val MyTable[1..*] tables;
+	val RelationSelect[*] rels;
+}
+
+@gmf.link(source="source",target="target",target.decoration="arrow",color="100,22,222",style="dot",width="3",label="type")
+abstract class RelationSelect{
+	ref Field[1] source;
+	ref Field[1] target; 
+	attr RelationSelectOperationType opType;
+}
+
+class InnerjoinRels extends RelationSelect{ 
+	readonly attr RelationSelectType[1] type = "InnerJoin"; 
+}
+
+class LeftOuterJoinRels extends RelationSelect{ 
+	readonly attr RelationSelectType[1] type = "LeftOuterJoin"; 
+}
+
+class RightOuterJoinRels extends RelationSelect{ 
+	readonly attr RelationSelectType[1] type = "RightOuterJoin"; 
+}
+
+class FullOuterJoinRels extends RelationSelect{ 
+	readonly attr RelationSelectType[1] type = "FullOuterJoin"; 
+}
+enum RelationSelectOperationType{
+	EQUAL;
+	GREATER;
+	GEREATER_EQUAL;
+	LOWER;
+	LOWER_EQUAL;
+}
+
+enum RelationSelectType{
+	InnerJoin;
+	LeftOuterJoin;
+	RightOuterJoin;
+	FullOuterJoin;
+}
+ 
+
+@gmf.node(label="name",size="100,500")
+class InputInstalment{
+	readonly attr String name="Inputs";
+	@gmf.compartment(layout = "list")
+	val InputDef[*] inputs;
+}
+@gmf.node(label="name",size="100,300")
+class SortInstalment{  
+	readonly attr String name="Sorted";
+	@gmf.compartment(layout = "list")
+	val FieldSPointer[*] pointers;
+}
+
+@gmf.node(label="name")
+class FieldSPointer{
+	attr String name; 
+	attr SortType type;
+	ref Field field;
+}
+
+enum SortType{
+	ASC;
+	DESC;
+}
+
+@gmf.node(label="name")
+abstract class AbstractNode{
+	
+}
+@gmf.node(label="name,alias",label.pattern="{0}/{1}")
+class MyTable extends AbstractNode{
+	attr String name;
+	unique attr String alias;
+	@gmf.compartment(layout = "list")
+	val Field[*]#table fields;
+}
+
+
+abstract class Node extends AbstractNode{
+	ref Type type;
+	ref Subtype subtype; 
+	attr String column_name;
+	attr boolean listable = false;  
+	 
+	
+}
+@gmf.node(label="column_name" ,padding="10",label.pattern="{0}" )
+class Field extends Node{
+	attr String name; 
+	ref MyTable#fields table;
+	attr String tableName;
+	ref MyTable table_ref;  
+	attr boolean distict;
+	
+}
+
+@gmf.node(label="value",label.pattern="{0}" )
+class Literal extends Node{
+	attr String value;
+	attr LiteralType ltype;
+}
+
+enum LiteralType{
+	STRING;
+	INT;
+	DOUBLE;
+	DATE;
+	BITS; 
+}
+@gmf.node(label="value",label.pattern="{0}")
+class NullLiteral extends Node{
+	readonly attr String value = "null";
+	
+}
+@gmf.node(label="name",label.pattern="{0}")
+class Function extends Node{
+	attr String name;
+	ref FunctionDef[1] funcDef;
+	@gmf.compartment(layout = "list")
+	val Node[*] params;
+	
+}
+
+
+class FunctionDef{
+	attr String name;
+	ref Subtype returntype;
+	ref Type args;
+}
+@gmf.node(label="column_name" )
+class Input extends Node{
+	ref InputDef[1] inputRef; 
+}
+
+@gmf.node(label="name" )
+abstract class InputDef{
+	attr String name;
+	attr int index;
+	attr boolean listable = false;
+}
+
+class InputStringDef   extends InputDef  {
+	
+}
+class InputIntDef extends InputDef {
+	
+}
+class InputDateDef extends InputDef {
+	
+}
+class InputBitsDef extends InputDef {
+	
+}
+
+class InputFloatDef extends InputDef {
+	
+} 
+class CallSurfaceQuery extends Function{
+ 
+	attr String surfaceName;
+}
+
+class Type{
+	attr String name;
+	ref Subtype[*] subtypes;	
+}
+
+class Subtype{
+	attr String name;
+}
+abstract class AbstractConditionElement{
+	 
+}
+
+@gmf.node(label="type",figure="ellipse")
+class Junction extends AbstractConditionElement {
+	attr JuncType type;
+	ref JuncRelationship[*]#source rels;
+}
+
+class RootJunction extends Junction{
+	
+}
+
+@gmf.link(source="source",target="target",style="dash",width="1",label="index",target.decoration="arrow",color="230,22,89")
+class JuncRelationship{
+	ref Junction[1]#rels source;
+	ref AbstractConditionElement[1] target;
+	attr int index=0;
+	readonly attr String type = "relates";
+}
+ 
+@gmf.node(figure="rectangle",label="title",label.icon="true")
+class Term extends AbstractConditionElement {
+	@gmf.compartment
+	val  Node[1..2] params; 
+	readonly attr String title = "Term"; 
+	val ConditionLink[1] link; 
+}
+
+@gmf.link(source="src",target="dst",style="dash",width="1",label="desc",target.decoration="arrow",color="20,182,19")
+abstract class ConditionLink{
+	ref  Node src;
+	ref  Node dst;
+	attr boolean negative;
+}
+
+class EqualLink extends ConditionLink{
+	readonly attr String desc = "=";
+}
+
+class GreaterThanLink extends ConditionLink{
+	readonly attr String desc = ">";
+}
+
+class GreaterEqualThanLink extends ConditionLink{
+	readonly attr String desc = ">=";
+}
+
+class LowerThanLink extends ConditionLink{
+	readonly attr String desc = "<";
+}
+
+class LowerEqualThanLink extends ConditionLink{
+	readonly attr String desc = "<=";
+}
+
+class InLink extends ConditionLink{
+	readonly attr String desc = "In";
+} 
+
+class LikeLink extends ConditionLink{
+	readonly attr String desc = "Like";
+}
+
+enum JuncType{
+	OR;
+	AND;
+}

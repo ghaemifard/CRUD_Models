@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/edu.aut.islab.insert/src" modelPluginID="edu.aut.islab.insert"
+    modelName="Insert" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>insert.emf</foreignModel>
+  <genPackages prefix="Insert" disposableProviderFactory="true" ecorePackage="insert.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="insert.ecore#//LiteralType">
+      <genEnumLiterals ecoreEnumLiteral="insert.ecore#//LiteralType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="insert.ecore#//LiteralType/INT"/>
+      <genEnumLiterals ecoreEnumLiteral="insert.ecore#//LiteralType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="insert.ecore#//LiteralType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="insert.ecore#//LiteralType/BITS"/>
+    </genEnums>
+    <genClasses ecoreClass="insert.ecore#//InsertSurface">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference insert.ecore#//InsertSurface/inputInstalment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference insert.ecore#//InsertSurface/prepareList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference insert.ecore#//InsertSurface/tableInstalment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//InsertSurface/types"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//InsertSurface/funcs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InsertSurface/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InsertSurface/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InsertSurface/associatedClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InsertSurface/userName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InsertSurface/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InsertSurface/uri"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//PrepareList">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//PrepareList/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference insert.ecore#//PrepareList/nodes"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//InputInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InputInstalment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference insert.ecore#//InputInstalment/inputs"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="insert.ecore#//AbstractNode"/>
+    <genClasses ecoreClass="insert.ecore#//Table">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Table/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference insert.ecore#//Table/fields"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="insert.ecore#//Node">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//Node/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//Node/subtype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Node/listable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Node/column_name"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Field/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference insert.ecore#//Field/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Field/tableName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//Field/table_ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Field/distict"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//Literal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Literal/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Literal/ltype"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//NullLiteral">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//NullLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Function/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//Function/funcDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference insert.ecore#//Function/params"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//FunctionDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//FunctionDef/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//FunctionDef/returntype"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//FunctionDef/args"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//Input">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//Input/inpDef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Input/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="insert.ecore#//InputDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InputDef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InputDef/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//InputDef/listable"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//InputStringDef"/>
+    <genClasses ecoreClass="insert.ecore#//InputIntDef"/>
+    <genClasses ecoreClass="insert.ecore#//InputDateDef"/>
+    <genClasses ecoreClass="insert.ecore#//InputBitsDef"/>
+    <genClasses ecoreClass="insert.ecore#//InputFloatDef"/>
+    <genClasses ecoreClass="insert.ecore#//CallSurfaceQuery">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//CallSurfaceQuery/surfaceName"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Type/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference insert.ecore#//Type/subtypes"/>
+    </genClasses>
+    <genClasses ecoreClass="insert.ecore#//Subtype">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute insert.ecore#//Subtype/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

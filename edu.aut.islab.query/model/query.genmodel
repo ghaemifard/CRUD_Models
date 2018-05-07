@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/edu.aut.islab.query/src" modelPluginID="edu.aut.islab.query"
+    modelName="Query" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>query.emf</foreignModel>
+  <genPackages prefix="Query" disposableProviderFactory="true" ecorePackage="query.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//QueryType">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//QueryType/SELECT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//QueryType/CREATE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//RelationSelectOperationType">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RelationSelectOperationType/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RelationSelectOperationType/GREATER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RelationSelectOperationType/GEREATER_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RelationSelectOperationType/LOWER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RelationSelectOperationType/LOWER_EQUAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//RelationSelectType">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RelationSelectType/InnerJoin"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RelationSelectType/LeftOuterJoin"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RelationSelectType/RightOuterJoin"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//RelationSelectType/FullOuterJoin"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//SortType">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//SortType/ASC"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//SortType/DESC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//LiteralType">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//LiteralType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//LiteralType/INT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//LiteralType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//LiteralType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//LiteralType/BITS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//JuncType">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//JuncType/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//JuncType/AND"/>
+    </genEnums>
+    <genClasses ecoreClass="query.ecore#//QuerySurface">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QuerySurface/outputInstalment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QuerySurface/inputInstalment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QuerySurface/whereInstalment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QuerySurface/havingInstalment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QuerySurface/groupInstalment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QuerySurface/sortInstalment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//QuerySurface/types"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//QuerySurface/funcs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/userName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/uri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/numberOfRow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/indexOfRoes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/createClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/associatedClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QuerySurface/type"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//OutputInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//OutputInstalment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OutputInstalment/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OutputInstalment/rels"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//InputInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//InputInstalment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//InputInstalment/inputs"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//SortInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//SortInstalment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SortInstalment/pointers"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//GroupInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//GroupInstalment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//GroupInstalment/pointers"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//ConditionInstalment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//ConditionInstalment/parts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//ConditionInstalment/links"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//WhereInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//WhereInstalment/name"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//HavingInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//HavingInstalment/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//RelationSelect">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//RelationSelect/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//RelationSelect/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//RelationSelect/opType"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//InnerjoinRels">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//InnerjoinRels/type"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//LeftOuterJoinRels">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//LeftOuterJoinRels/type"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//RightOuterJoinRels">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//RightOuterJoinRels/type"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FullOuterJoinRels">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FullOuterJoinRels/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//AbstractNode"/>
+    <genClasses ecoreClass="query.ecore#//FieldGPointer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FieldGPointer/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FieldGPointer/field"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FieldSPointer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FieldSPointer/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FieldSPointer/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FieldSPointer/field"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//MyTable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//MyTable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//MyTable/alias"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//MyTable/fields"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//Node">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Node/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Node/subtype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Node/column_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Node/listable"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Field/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference query.ecore#//Field/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Field/tableName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Field/table_ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Field/distict"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Literal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Literal/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Literal/ltype"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//NullLiteral">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//NullLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Function/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Function/funcDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Function/params"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FunctionDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionDef/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FunctionDef/returntype"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FunctionDef/args"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Input">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Input/inputRef"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//InputDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//InputDef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//InputDef/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//InputDef/listable"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//InputStringDef"/>
+    <genClasses ecoreClass="query.ecore#//InputIntDef"/>
+    <genClasses ecoreClass="query.ecore#//InputDateDef"/>
+    <genClasses ecoreClass="query.ecore#//InputBitsDef"/>
+    <genClasses ecoreClass="query.ecore#//InputFloatDef"/>
+    <genClasses ecoreClass="query.ecore#//CallQuerySurface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//CallQuerySurface/surfaceName"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Type/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Type/subtypes"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Subtype">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Subtype/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//AbstractConditionElement"/>
+    <genClasses ecoreClass="query.ecore#//Junction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Junction/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Junction/rels"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//RootJunction"/>
+    <genClasses ecoreClass="query.ecore#//JuncRelationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//JuncRelationship/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//JuncRelationship/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//JuncRelationship/index"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//JuncRelationship/type"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Term">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Term/params"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Term/title"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Term/link"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//ConditionLink">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ConditionLink/src"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ConditionLink/dst"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//ConditionLink/negative"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//EqualLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//EqualLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//GreaterThanLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//GreaterThanLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//GreaterEqualThanLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//GreaterEqualThanLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//LowerThanLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//LowerThanLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//LowerEqualThanLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//LowerEqualThanLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//InLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//InLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//LikeLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//LikeLink/desc"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,1218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+
+-->
+<plugin>
+
+   <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
+      <?gmfgen generated="true"?>
+      <fileTypes type="text" extension="ddext"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
+      <?gmfgen generated="true"?>
+      <parser
+         type="ddext"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors" id="gmf-editor">
+      <?gmfgen generated="true"?>
+      <editor
+         id="delete.diagram.part.DeleteDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/DeleteDiagramFile.gif"
+         extensions="ddext"
+         default="true"
+         class="delete.diagram.part.DeleteDiagramEditor"
+         matchingStrategy="delete.diagram.part.DeleteMatchingStrategy"
+         contributorClass="delete.diagram.part.DeleteDiagramActionBarContributor">
+      </editor>
+   </extension>
+   
+   <extension point="org.eclipse.ui.contexts" id="ui-context">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="delete.diagram.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
+      <?gmfgen generated="true"?>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/obj16/DeleteDiagramFile.gif"
+  	     category="org.eclipse.ui.Examples"
+  	     class="delete.diagram.part.DeleteCreationWizard"
+  	     id="delete.diagram.part.DeleteCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="edu.aut.islab.delete.diagram.InitDiagram"
+            nameFilter="*.dmext"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="delete.diagram.part.DeleteInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="edu.aut.islab.delete.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+	
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders" id="global-actions">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="DeletePresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="delete.diagram.part.DeleteDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="save">
+               </GlobalActionId>
+            </ElementType>        
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.printing.render.providers.DiagramWithPrintGlobalActionHandlerProvider"
+         id="DeletePresentationPrint">
+         <Priority name="Lowest"/>
+         <ViewId id="delete.diagram.part.DeleteDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="print"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="DeletePresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="delete.diagram.part.DeleteDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="DeleteRender">
+         <Priority name="Lowest"/>
+         <ViewId id="delete.diagram.part.DeleteDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+      <?gmfgen generated="true"?>
+      <MarkerNavigationProvider class="delete.diagram.providers.DeleteMarkerNavigationProvider">
+         <MarkerType name="edu.aut.islab.delete.diagram.diagnostic"/>
+         <Priority name="Lowest"/>
+      </MarkerNavigationProvider>
+   </extension>
+
+   <extension id="diagnostic" name="Delete Plugin problems" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>
+   </extension>   
+
+   <extension id="validationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="delete.diagram.providers.DeleteValidationDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+   <extension point="org.eclipse.core.runtime.preferences" id="prefs">
+      <?gmfgen generated="true"?>
+      <initializer class="delete.diagram.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages" id="prefpages">
+      <?gmfgen generated="true"?>
+      <page
+            id="edu.aut.islab.delete.diagram.general"
+            name="%prefpage.edu.aut.islab.delete.diagram.general"
+            class="delete.diagram.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="edu.aut.islab.delete.diagram.appearance"
+            name="%prefpage.edu.aut.islab.delete.diagram.appearance"
+            category="edu.aut.islab.delete.diagram.general"
+            class="delete.diagram.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="edu.aut.islab.delete.diagram.connections"
+            name="%prefpage.edu.aut.islab.delete.diagram.connections"
+            category="edu.aut.islab.delete.diagram.general"
+            class="delete.diagram.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="edu.aut.islab.delete.diagram.printing"
+            name="%prefpage.edu.aut.islab.delete.diagram.printing"
+            category="edu.aut.islab.delete.diagram.general"
+            class="delete.diagram.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="edu.aut.islab.delete.diagram.rulersAndGrid"
+            name="%prefpage.edu.aut.islab.delete.diagram.rulersAndGrid"
+            category="edu.aut.islab.delete.diagram.general"
+            class="delete.diagram.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="edu.aut.islab.delete.diagram"
+            labelProvider="delete.diagram.sheet.DeleteSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="edu.aut.islab.delete.diagram">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+      </propertyTabs>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="edu.aut.islab.delete.diagram">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="delete.diagram.sheet.DeletePropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="delete.diagram.navigator.DeleteAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
+      <?gmfgen generated="true"?>
+      <viewProvider class="delete.diagram.providers.DeleteViewProvider">
+         <Priority name="Lowest"/>
+         <object id="referencing-diagrams" class="org.eclipse.gmf.runtime.notation.Diagram">
+            <method name="getType()" value="dmext"/>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Delete"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2005,2006,2007,3001,3002,3003,3004,3037,3051,3052,3040,3041,3042,3025,3014,3015,3016,3017,3018,3019,3012,3026,3027,3028,3029,3043,3044,3045,3046,3047,3048,3049,3053"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002,4003,4004,4006,4007,4008,4009,4010,4011,4012,4013"/>
+      </viewProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders" id="ep-provider">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="delete.diagram.providers.DeleteEditPartProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
+            <method name="getType()" value="Delete"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
+            <method name="getType()" value="2001,2002,2005,2006,2007,3001,3002,3003,3004,3037,3051,3052,3040,3041,3042,3025,3014,3015,3016,3017,3018,3019,3012,3026,3027,3028,3029,3043,3044,3045,3046,3047,3048,3049,3053"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
+            <method name="getType()" value="4001,4002,4003,4004,4006,4007,4008,4009,4010,4011,4012,4013"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
+            <method name="getType()" value="5005,5008,5047,5049,5057,5001,5002,5003,5004,5041,5059,5058,5044,5045,5046,5028,5021,5016,5017,5018,5020,5019,5014,5029,5030,5031,5032,5048,5050,5051,5052,5053,5054,5055,5060"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
+            <method name="getType()" value="7001,7002,7025,7018,7019,7011,7008,7009,7012,7020,7021,7022,7023,7026"/>
+         </object>
+         <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
+      </editpartProvider>
+   </extension>
+
+   
+   <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfDeleteSurfaceEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.DeleteSurfaceEditPart" id="DeleteSurface_1000"/>
+         <context elements="DeleteSurface_1000"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfInputInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.InputInstalmentEditPart" id="InputInstalment_2001"/>
+         <context elements="InputInstalment_2001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfTableListInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.TableListInstalmentEditPart" id="TableListInstalment_2002"/>
+         <context elements="TableListInstalment_2002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfConditionInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.ConditionInstalmentEditPart" id="ConditionInstalment_2005"/>
+         <context elements="ConditionInstalment_2005"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfSortInstalmentEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.SortInstalmentEditPart" id="SortInstalment_2006"/>
+         <context elements="SortInstalment_2006"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfDummyEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.DummyEditPart" id="Dummy_2007"/>
+         <context elements="Dummy_2007"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfInputStringDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.InputStringDefEditPart" id="InputStringDef_3001"/>
+         <context elements="InputStringDef_3001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfInputIntDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.InputIntDefEditPart" id="InputIntDef_3002"/>
+         <context elements="InputIntDef_3002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfInputDateDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.InputDateDefEditPart" id="InputDateDef_3003"/>
+         <context elements="InputDateDef_3003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfInputBitsDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.InputBitsDefEditPart" id="InputBitsDef_3004"/>
+         <context elements="InputBitsDef_3004"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfInputFloatDefEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.InputFloatDefEditPart" id="InputFloatDef_3037"/>
+         <context elements="InputFloatDef_3037"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfMyTableEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.MyTableEditPart" id="MyTable_3051"/>
+         <context elements="MyTable_3051"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfFieldEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.FieldEditPart" id="Field_3052"/>
+         <context elements="Field_3052"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfRootJunctionEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.RootJunctionEditPart" id="RootJunction_3040"/>
+         <context elements="RootJunction_3040"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfJunctionEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.JunctionEditPart" id="Junction_3041"/>
+         <context elements="Junction_3041"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfTermEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.TermEditPart" id="Term_3042"/>
+         <context elements="Term_3042"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfCallSurfaceQueryEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.CallSurfaceQueryEditPart" id="CallSurfaceQuery_3025"/>
+         <context elements="CallSurfaceQuery_3025"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfCallSurfaceQuery2EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.CallSurfaceQuery2EditPart" id="CallSurfaceQuery_3014"/>
+         <context elements="CallSurfaceQuery_3014"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfField2EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.Field2EditPart" id="Field_3015"/>
+         <context elements="Field_3015"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfLiteralEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.LiteralEditPart" id="Literal_3016"/>
+         <context elements="Literal_3016"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfNullLiteralEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.NullLiteralEditPart" id="NullLiteral_3017"/>
+         <context elements="NullLiteral_3017"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfFunctionEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.FunctionEditPart" id="Function_3018"/>
+         <context elements="Function_3018"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfInputEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.InputEditPart" id="Input_3019"/>
+         <context elements="Input_3019"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfField3EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.Field3EditPart" id="Field_3012"/>
+         <context elements="Field_3012"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfLiteral2EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.Literal2EditPart" id="Literal_3026"/>
+         <context elements="Literal_3026"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfNullLiteral2EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.NullLiteral2EditPart" id="NullLiteral_3027"/>
+         <context elements="NullLiteral_3027"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfFunction2EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.Function2EditPart" id="Function_3028"/>
+         <context elements="Function_3028"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfInput2EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.Input2EditPart" id="Input_3029"/>
+         <context elements="Input_3029"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfFieldSPointerEditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.FieldSPointerEditPart" id="FieldSPointer_3043"/>
+         <context elements="FieldSPointer_3043"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfCallSurfaceQuery3EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.CallSurfaceQuery3EditPart" id="CallSurfaceQuery_3044"/>
+         <context elements="CallSurfaceQuery_3044"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfField4EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.Field4EditPart" id="Field_3045"/>
+         <context elements="Field_3045"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfLiteral3EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.Literal3EditPart" id="Literal_3046"/>
+         <context elements="Literal_3046"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfNullLiteral3EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.NullLiteral3EditPart" id="NullLiteral_3047"/>
+         <context elements="NullLiteral_3047"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfFunction3EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.Function3EditPart" id="Function_3048"/>
+         <context elements="Function_3048"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfInput3EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.Input3EditPart" id="Input_3049"/>
+         <context elements="Input_3049"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="delete.diagram.providers.assistants.DeleteModelingAssistantProviderOfMyTable2EditPart">
+         <Priority name="Lowest"/>
+         <object class="delete.diagram.edit.parts.MyTable2EditPart" id="MyTable_3053"/>
+         <context elements="MyTable_3053"/>
+      </modelingAssistantProvider>
+      
+   </extension>
+
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
+      <?gmfgen generated="true"?>
+      <IconProvider class="delete.diagram.providers.DeleteIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="delete.diagram.providers.DeleteParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders" id="decorator-provider">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="delete.diagram.providers.DeleteShortcutsDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Node(org.eclipse.gmf.runtime.notation)" id="generated-top-nodes">
+            <method name="getType()" value="2001,2002,2005,2006,2007"/>
+         </object>
+         <context decoratorTargets="generated-top-nodes"/>
+      </decoratorProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes" id="element-types">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.DeleteSurface_1000"
+               name="%metatype.name.DeleteSurface_1000"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="DeleteSurface"
+               edithelper="delete.diagram.edit.helpers.DeleteSurfaceEditHelper">
+            <param name="semanticHint" value="1000"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.InputInstalment_2001"
+               name="%metatype.name.InputInstalment_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputInstalment"
+               edithelper="delete.diagram.edit.helpers.InputInstalmentEditHelper">
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.TableListInstalment_2002"
+               name="%metatype.name.TableListInstalment_2002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="TableListInstalment"
+               edithelper="delete.diagram.edit.helpers.TableListInstalmentEditHelper">
+            <param name="semanticHint" value="2002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.ConditionInstalment_2005"
+               name="%metatype.name.ConditionInstalment_2005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ConditionInstalment"
+               edithelper="delete.diagram.edit.helpers.ConditionInstalmentEditHelper">
+            <param name="semanticHint" value="2005"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.SortInstalment_2006"
+               name="%metatype.name.SortInstalment_2006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SortInstalment"
+               edithelper="delete.diagram.edit.helpers.SortInstalmentEditHelper">
+            <param name="semanticHint" value="2006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.Dummy_2007"
+               name="%metatype.name.Dummy_2007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Dummy"
+               edithelper="delete.diagram.edit.helpers.DummyEditHelper">
+            <param name="semanticHint" value="2007"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.InputStringDef_3001"
+               name="%metatype.name.InputStringDef_3001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputStringDef"
+               edithelper="delete.diagram.edit.helpers.InputStringDefEditHelper">
+            <param name="semanticHint" value="3001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.InputIntDef_3002"
+               name="%metatype.name.InputIntDef_3002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputIntDef"
+               edithelper="delete.diagram.edit.helpers.InputIntDefEditHelper">
+            <param name="semanticHint" value="3002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.InputDateDef_3003"
+               name="%metatype.name.InputDateDef_3003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputDateDef"
+               edithelper="delete.diagram.edit.helpers.InputDateDefEditHelper">
+            <param name="semanticHint" value="3003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.InputBitsDef_3004"
+               name="%metatype.name.InputBitsDef_3004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputBitsDef"
+               edithelper="delete.diagram.edit.helpers.InputBitsDefEditHelper">
+            <param name="semanticHint" value="3004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.InputFloatDef_3037"
+               name="%metatype.name.InputFloatDef_3037"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputFloatDef"
+               edithelper="delete.diagram.edit.helpers.InputFloatDefEditHelper">
+            <param name="semanticHint" value="3037"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.MyTable_3051"
+               name="%metatype.name.MyTable_3051"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="MyTable"
+               edithelper="delete.diagram.edit.helpers.MyTableEditHelper">
+            <param name="semanticHint" value="3051"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.Field_3052"
+               name="%metatype.name.Field_3052"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Field"
+               edithelper="delete.diagram.edit.helpers.FieldEditHelper">
+            <param name="semanticHint" value="3052"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.RootJunction_3040"
+               name="%metatype.name.RootJunction_3040"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="RootJunction"
+               edithelper="delete.diagram.edit.helpers.RootJunctionEditHelper">
+            <param name="semanticHint" value="3040"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.Junction_3041"
+               name="%metatype.name.Junction_3041"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Junction"
+               edithelper="delete.diagram.edit.helpers.JunctionEditHelper">
+            <param name="semanticHint" value="3041"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.Term_3042"
+               name="%metatype.name.Term_3042"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Term"
+               edithelper="delete.diagram.edit.helpers.TermEditHelper">
+            <param name="semanticHint" value="3042"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.CallSurfaceQuery_3025"
+               name="%metatype.name.CallSurfaceQuery_3025"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="CallSurfaceQuery"
+               edithelper="delete.diagram.edit.helpers.CallSurfaceQueryEditHelper">
+            <param name="semanticHint" value="3025"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.CallSurfaceQuery_3014"
+               name="%metatype.name.CallSurfaceQuery_3014"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.CallSurfaceQuery_3025"/>
+            <param name="semanticHint" value="3014"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.Field_3015"
+               name="%metatype.name.Field_3015"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.Field_3052"/>
+            <param name="semanticHint" value="3015"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.Literal_3016"
+               name="%metatype.name.Literal_3016"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Literal"
+               edithelper="delete.diagram.edit.helpers.LiteralEditHelper">
+            <param name="semanticHint" value="3016"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.NullLiteral_3017"
+               name="%metatype.name.NullLiteral_3017"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="NullLiteral"
+               edithelper="delete.diagram.edit.helpers.NullLiteralEditHelper">
+            <param name="semanticHint" value="3017"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.Function_3018"
+               name="%metatype.name.Function_3018"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Function"
+               edithelper="delete.diagram.edit.helpers.FunctionEditHelper">
+            <param name="semanticHint" value="3018"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.Input_3019"
+               name="%metatype.name.Input_3019"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Input"
+               edithelper="delete.diagram.edit.helpers.InputEditHelper">
+            <param name="semanticHint" value="3019"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.Field_3012"
+               name="%metatype.name.Field_3012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.Field_3052"/>
+            <param name="semanticHint" value="3012"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.Literal_3026"
+               name="%metatype.name.Literal_3026"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.Literal_3016"/>
+            <param name="semanticHint" value="3026"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.NullLiteral_3027"
+               name="%metatype.name.NullLiteral_3027"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.NullLiteral_3017"/>
+            <param name="semanticHint" value="3027"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.Function_3028"
+               name="%metatype.name.Function_3028"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.Function_3018"/>
+            <param name="semanticHint" value="3028"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.Input_3029"
+               name="%metatype.name.Input_3029"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.Input_3019"/>
+            <param name="semanticHint" value="3029"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.FieldSPointer_3043"
+               name="%metatype.name.FieldSPointer_3043"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="FieldSPointer"
+               edithelper="delete.diagram.edit.helpers.FieldSPointerEditHelper">
+            <param name="semanticHint" value="3043"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.CallSurfaceQuery_3044"
+               name="%metatype.name.CallSurfaceQuery_3044"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.CallSurfaceQuery_3025"/>
+            <param name="semanticHint" value="3044"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.Field_3045"
+               name="%metatype.name.Field_3045"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.Field_3052"/>
+            <param name="semanticHint" value="3045"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.Literal_3046"
+               name="%metatype.name.Literal_3046"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.Literal_3016"/>
+            <param name="semanticHint" value="3046"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.NullLiteral_3047"
+               name="%metatype.name.NullLiteral_3047"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.NullLiteral_3017"/>
+            <param name="semanticHint" value="3047"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.Function_3048"
+               name="%metatype.name.Function_3048"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.Function_3018"/>
+            <param name="semanticHint" value="3048"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.Input_3049"
+               name="%metatype.name.Input_3049"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.Input_3019"/>
+            <param name="semanticHint" value="3049"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <specializationType
+               id="edu.aut.islab.delete.diagram.MyTable_3053"
+               name="%metatype.name.MyTable_3053"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="edu.aut.islab.delete.diagram.MyTable_3051"/>
+            <param name="semanticHint" value="3053"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.InnerjoinRels_4001"
+               name="%metatype.name.InnerjoinRels_4001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InnerjoinRels"
+               edithelper="delete.diagram.edit.helpers.InnerjoinRelsEditHelper">
+            <param name="semanticHint" value="4001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.LeftOuterJoinRels_4002"
+               name="%metatype.name.LeftOuterJoinRels_4002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LeftOuterJoinRels"
+               edithelper="delete.diagram.edit.helpers.LeftOuterJoinRelsEditHelper">
+            <param name="semanticHint" value="4002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.RightOuterJoinRels_4003"
+               name="%metatype.name.RightOuterJoinRels_4003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="RightOuterJoinRels"
+               edithelper="delete.diagram.edit.helpers.RightOuterJoinRelsEditHelper">
+            <param name="semanticHint" value="4003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.FullOuterJoinRels_4004"
+               name="%metatype.name.FullOuterJoinRels_4004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="FullOuterJoinRels"
+               edithelper="delete.diagram.edit.helpers.FullOuterJoinRelsEditHelper">
+            <param name="semanticHint" value="4004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.EqualLink_4006"
+               name="%metatype.name.EqualLink_4006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="EqualLink"
+               edithelper="delete.diagram.edit.helpers.EqualLinkEditHelper">
+            <param name="semanticHint" value="4006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.GreaterThanLink_4007"
+               name="%metatype.name.GreaterThanLink_4007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="GreaterThanLink"
+               edithelper="delete.diagram.edit.helpers.GreaterThanLinkEditHelper">
+            <param name="semanticHint" value="4007"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.GreaterEqualThanLink_4008"
+               name="%metatype.name.GreaterEqualThanLink_4008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="GreaterEqualThanLink"
+               edithelper="delete.diagram.edit.helpers.GreaterEqualThanLinkEditHelper">
+            <param name="semanticHint" value="4008"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.LowerThanLink_4009"
+               name="%metatype.name.LowerThanLink_4009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LowerThanLink"
+               edithelper="delete.diagram.edit.helpers.LowerThanLinkEditHelper">
+            <param name="semanticHint" value="4009"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.LowerEqualThanLink_4010"
+               name="%metatype.name.LowerEqualThanLink_4010"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LowerEqualThanLink"
+               edithelper="delete.diagram.edit.helpers.LowerEqualThanLinkEditHelper">
+            <param name="semanticHint" value="4010"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.InLink_4011"
+               name="%metatype.name.InLink_4011"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InLink"
+               edithelper="delete.diagram.edit.helpers.InLinkEditHelper">
+            <param name="semanticHint" value="4011"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.LikeLink_4012"
+               name="%metatype.name.LikeLink_4012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LikeLink"
+               edithelper="delete.diagram.edit.helpers.LikeLinkEditHelper">
+            <param name="semanticHint" value="4012"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.delete.it.is/v1.0/beta">
+         <metamodelType
+               id="edu.aut.islab.delete.diagram.JuncRelationship_4013"
+               name="%metatype.name.JuncRelationship_4013"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="JuncRelationship"
+               edithelper="delete.diagram.edit.helpers.JuncRelationshipEditHelper">
+            <param name="semanticHint" value="4013"/>
+         </metamodelType>
+      </metamodel>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="edu.aut.islab.delete.diagram.TypeContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="edu.aut.islab.delete.diagram.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="edu.aut.islab.delete.diagram.TypeContext">
+         <elementType ref="edu.aut.islab.delete.diagram.DeleteSurface_1000"/>
+         <elementType ref="edu.aut.islab.delete.diagram.InputInstalment_2001"/>
+         <elementType ref="edu.aut.islab.delete.diagram.TableListInstalment_2002"/>
+         <elementType ref="edu.aut.islab.delete.diagram.ConditionInstalment_2005"/>
+         <elementType ref="edu.aut.islab.delete.diagram.SortInstalment_2006"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Dummy_2007"/>
+         <elementType ref="edu.aut.islab.delete.diagram.InputStringDef_3001"/>
+         <elementType ref="edu.aut.islab.delete.diagram.InputIntDef_3002"/>
+         <elementType ref="edu.aut.islab.delete.diagram.InputDateDef_3003"/>
+         <elementType ref="edu.aut.islab.delete.diagram.InputBitsDef_3004"/>
+         <elementType ref="edu.aut.islab.delete.diagram.InputFloatDef_3037"/>
+         <elementType ref="edu.aut.islab.delete.diagram.MyTable_3051"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Field_3052"/>
+         <elementType ref="edu.aut.islab.delete.diagram.RootJunction_3040"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Junction_3041"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Term_3042"/>
+         <elementType ref="edu.aut.islab.delete.diagram.CallSurfaceQuery_3025"/>
+         <elementType ref="edu.aut.islab.delete.diagram.CallSurfaceQuery_3014"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Field_3015"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Literal_3016"/>
+         <elementType ref="edu.aut.islab.delete.diagram.NullLiteral_3017"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Function_3018"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Input_3019"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Field_3012"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Literal_3026"/>
+         <elementType ref="edu.aut.islab.delete.diagram.NullLiteral_3027"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Function_3028"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Input_3029"/>
+         <elementType ref="edu.aut.islab.delete.diagram.FieldSPointer_3043"/>
+         <elementType ref="edu.aut.islab.delete.diagram.CallSurfaceQuery_3044"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Field_3045"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Literal_3046"/>
+         <elementType ref="edu.aut.islab.delete.diagram.NullLiteral_3047"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Function_3048"/>
+         <elementType ref="edu.aut.islab.delete.diagram.Input_3049"/>
+         <elementType ref="edu.aut.islab.delete.diagram.MyTable_3053"/>
+         <elementType ref="edu.aut.islab.delete.diagram.InnerjoinRels_4001"/>
+         <elementType ref="edu.aut.islab.delete.diagram.LeftOuterJoinRels_4002"/>
+         <elementType ref="edu.aut.islab.delete.diagram.RightOuterJoinRels_4003"/>
+         <elementType ref="edu.aut.islab.delete.diagram.FullOuterJoinRels_4004"/>
+         <elementType ref="edu.aut.islab.delete.diagram.EqualLink_4006"/>
+         <elementType ref="edu.aut.islab.delete.diagram.GreaterThanLink_4007"/>
+         <elementType ref="edu.aut.islab.delete.diagram.GreaterEqualThanLink_4008"/>
+         <elementType ref="edu.aut.islab.delete.diagram.LowerThanLink_4009"/>
+         <elementType ref="edu.aut.islab.delete.diagram.LowerEqualThanLink_4010"/>
+         <elementType ref="edu.aut.islab.delete.diagram.InLink_4011"/>
+         <elementType ref="edu.aut.islab.delete.diagram.LikeLink_4012"/>
+         <elementType ref="edu.aut.islab.delete.diagram.JuncRelationship_4013"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isURIEditorInput">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="edu.aut.islab.delete.diagram.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="edu.aut.islab.delete.diagram"
+           properties="isURIEditorInput"
+           class="delete.diagram.part.DeleteUriEditorInputTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isShortcut">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="edu.aut.islab.delete.diagram.ShortcutPropertyTester"
+           type="org.eclipse.gmf.runtime.notation.View"
+           namespace="edu.aut.islab.delete.diagram"
+           properties="isShortcut"
+           class="delete.diagram.part.DeleteShortcutPropertyTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.ui.navigator.viewer" id="navigator-viewbinding">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="edu.aut.islab.delete.diagram.resourceContent"/>
+			<contentExtension pattern="edu.aut.islab.delete.diagram.domainResourceContent"/>
+            <contentExtension pattern="edu.aut.islab.delete.diagram.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="edu.aut.islab.delete.diagram.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="edu.aut.islab.delete.diagram.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="delete.diagram.navigator.DeleteNavigatorContentProvider" 
+            labelProvider="delete.diagram.navigator.DeleteNavigatorLabelProvider"
+            icon="icons/obj16/DeleteDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="ddext"/>
+               </and>
+               <instanceof value="delete.diagram.navigator.DeleteAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="edu.aut.islab.delete.diagram.isShortcut"/>
+           	   </adapt>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="delete.diagram.navigator.DeleteAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="edu.aut.islab.delete.diagram.isShortcut"/>
+           	   </adapt>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="edu.aut.islab.delete.diagram.navigatorSorter" 
+               class="delete.diagram.navigator.DeleteNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="ddext"/>
+                  </and>
+                  <instanceof value="delete.diagram.navigator.DeleteAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="edu.aut.islab.delete.diagram.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="delete.diagram.navigator.DeleteDomainNavigatorContentProvider" 
+            labelProvider="delete.diagram.navigator.DeleteDomainNavigatorLabelProvider"
+            icon="icons/obj16/DeleteDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="dmext"/>
+               </and>
+               <instanceof value="delete.diagram.navigator.DeleteDomainNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <instanceof value="delete.diagram.navigator.DeleteDomainNavigatorItem"/>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="edu.aut.islab.delete.diagram.navigatorActionProvider"
+            class="delete.diagram.navigator.DeleteNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="delete.diagram.navigator.DeleteAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="edu.aut.islab.delete.diagram.isShortcut"/>
+           	   </adapt>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+   
+	   <extension point="org.eclipse.ui.navigator.linkHelper" id="navigator-linkhelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="edu.aut.islab.delete.diagram.navigatorLinkHelper"
+            class="delete.diagram.navigator.DeleteNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="edu.aut.islab.delete.diagram.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="delete.diagram.navigator.DeleteAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+   <extension point="org.eclipse.ui.commands" id="update-cmd">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="delete.diagram.part.DeleteDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="delete.diagram.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="delete.diagram.updateDiagram"
+         contextId="delete.diagram.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus" id="context-menus">
+      <?gmfgen generated="true"?>
+      <!-- menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=">
+      </menuContribution>
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=">
+      </menuContribution -->
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="edu.aut.islab.delete.diagram.LoadResourceAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="delete.diagram.part.DeleteDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="delete.diagram.edit.parts.DeleteSurfaceEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands" id="menu-commands">
+      <?gmfgen generated="true"?>
+      <category id="delete.diagram.part.DeleteDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
+      <command id="edu.aut.islab.delete.diagram.LoadResourceAction"
+         name="Load Resource"
+         categoryId="delete.diagram.part.DeleteDiagramEditorID"
+         defaultHandler="delete.diagram.part.LoadResourceAction"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers" id="menu-handlers">
+      <?gmfgen generated="true"?>
+   </extension>
+
+   <!-- optionally, specify keybindings -->
+</plugin>

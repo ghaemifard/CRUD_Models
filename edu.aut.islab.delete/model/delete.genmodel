@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/edu.aut.islab.delete/src" modelPluginID="edu.aut.islab.delete"
+    modelName="Delete" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>delete.emf</foreignModel>
+  <genPackages prefix="Delete" disposableProviderFactory="true" ecorePackage="delete.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="delete.ecore#//RelationSelectOperationType">
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//RelationSelectOperationType/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//RelationSelectOperationType/GREATER"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//RelationSelectOperationType/GEREATER_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//RelationSelectOperationType/LOWER"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//RelationSelectOperationType/LOWER_EQUAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="delete.ecore#//RelationSelectType">
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//RelationSelectType/InnerJoin"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//RelationSelectType/LeftOuterJoin"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//RelationSelectType/RightOuterJoin"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//RelationSelectType/FullOuterJoin"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="delete.ecore#//SortType">
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//SortType/ASC"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//SortType/DESC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="delete.ecore#//LiteralType">
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//LiteralType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//LiteralType/INT"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//LiteralType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//LiteralType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//LiteralType/BITS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="delete.ecore#//JuncType">
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//JuncType/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="delete.ecore#//JuncType/AND"/>
+    </genEnums>
+    <genClasses ecoreClass="delete.ecore#//DeleteSurface">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//DeleteSurface/inputInsta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//DeleteSurface/tableInsta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//DeleteSurface/whereInsta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//DeleteSurface/sortInstalment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//DeleteSurface/dummy"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//DeleteSurface/types"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//DeleteSurface/funcs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//DeleteSurface/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//DeleteSurface/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//DeleteSurface/associatedClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//DeleteSurface/userName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//DeleteSurface/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//DeleteSurface/uri"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//ConditionInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//ConditionInstalment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//ConditionInstalment/parts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//ConditionInstalment/links"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//Dummy">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Dummy/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//Dummy/parts"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//TableListInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//TableListInstalment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//TableListInstalment/tables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//TableListInstalment/rels"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="delete.ecore#//RelationSelect">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//RelationSelect/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//RelationSelect/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//RelationSelect/opType"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//InnerjoinRels">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//InnerjoinRels/type"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//LeftOuterJoinRels">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//LeftOuterJoinRels/type"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//RightOuterJoinRels">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//RightOuterJoinRels/type"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//FullOuterJoinRels">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//FullOuterJoinRels/type"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//InputInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//InputInstalment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//InputInstalment/inputs"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//SortInstalment">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//SortInstalment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//SortInstalment/pointers"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//FieldSPointer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//FieldSPointer/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//FieldSPointer/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//FieldSPointer/field"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="delete.ecore#//AbstractNode"/>
+    <genClasses ecoreClass="delete.ecore#//MyTable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//MyTable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//MyTable/alias"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//MyTable/fields"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="delete.ecore#//Node">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//Node/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//Node/subtype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Node/column_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Node/listable"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Field/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference delete.ecore#//Field/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Field/tableName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//Field/table_ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Field/distict"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//Literal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Literal/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Literal/ltype"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//NullLiteral">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//NullLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Function/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//Function/funcDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//Function/params"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//FunctionDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//FunctionDef/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//FunctionDef/returntype"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//FunctionDef/args"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//Input">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//Input/inputRef"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="delete.ecore#//InputDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//InputDef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//InputDef/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//InputDef/listable"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//InputStringDef"/>
+    <genClasses ecoreClass="delete.ecore#//InputIntDef"/>
+    <genClasses ecoreClass="delete.ecore#//InputDateDef"/>
+    <genClasses ecoreClass="delete.ecore#//InputBitsDef"/>
+    <genClasses ecoreClass="delete.ecore#//InputFloatDef"/>
+    <genClasses ecoreClass="delete.ecore#//CallSurfaceQuery">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//CallSurfaceQuery/surfaceName"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Type/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//Type/subtypes"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//Subtype">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Subtype/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="delete.ecore#//AbstractConditionElement"/>
+    <genClasses ecoreClass="delete.ecore#//Junction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Junction/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//Junction/rels"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//RootJunction"/>
+    <genClasses ecoreClass="delete.ecore#//JuncRelationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//JuncRelationship/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//JuncRelationship/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//JuncRelationship/index"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//JuncRelationship/type"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//Term">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//Term/params"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//Term/title"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference delete.ecore#//Term/link"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="delete.ecore#//ConditionLink">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//ConditionLink/src"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference delete.ecore#//ConditionLink/dst"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//ConditionLink/negative"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//EqualLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//EqualLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//GreaterThanLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//GreaterThanLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//GreaterEqualThanLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//GreaterEqualThanLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//LowerThanLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//LowerThanLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//LowerEqualThanLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//LowerEqualThanLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//InLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//InLink/desc"/>
+    </genClasses>
+    <genClasses ecoreClass="delete.ecore#//LikeLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute delete.ecore#//LikeLink/desc"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
